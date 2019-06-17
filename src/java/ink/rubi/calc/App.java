@@ -31,11 +31,9 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pattern/App.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/App.fxml"));
         layout = fxmlLoader.load();
 
-//        window.setResizable(false);
-//        window.setMax
         window.setTitle("压血计算器");
 
         scene = new Scene(layout);

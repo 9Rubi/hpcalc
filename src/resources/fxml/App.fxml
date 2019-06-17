@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Button?>
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0"
-            prefWidth="935.0" stylesheets="/pattern/App.css"
+            prefWidth="935.0" stylesheets="/css/App.css"
             xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ink.rubi.calc.controller.MainController">
 
