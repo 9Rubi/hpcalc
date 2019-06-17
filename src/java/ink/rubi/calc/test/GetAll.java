@@ -92,14 +92,11 @@ public class GetAll {
                 .multiply(new BigDecimal(1.15))
                 .add(maxHpIncreaseResult);
         int intValue = result.intValue();
-        if (4 <= intValue && intValue < 500) {
+        if (4 <= intValue && intValue < 1000) {
             log.info("==========================================");
-            log.info("护盾等级：" + shieldLevel);
-            log.info("配件：" + alpha + "|" + beta + "|" + gamma);
-            log.info("稀有度：+" + reality.getName());
-            log.info("模组等级为：" + moduleLevel);
-            log.info("配件：" + betaFactory + "|" + gammaFactory);
-            log.info("最终血量:{}", intValue);
+            log.info("护盾等级：{},配件：{}|{}|{},稀有度：{}", shieldLevel, alpha, beta, gamma, reality.getName());
+            log.info("模组等级为：{},配件：{}|{}", moduleLevel, betaFactory, gammaFactory);
+            log.info("最终血量：{}", intValue);
             log.info("==========================================");
             thereIs++;
         }
