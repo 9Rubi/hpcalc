@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0"
             prefWidth="935.0" stylesheets="/css/App.css"
@@ -17,42 +14,9 @@
                         source="ShieldCard.fxml"/>
             <fx:include fx:id="moduleCard" BorderPane.alignment="TOP_LEFT"
                         source="ModuleCard.fxml"/>
-            <Button fx:id="calc" text="jisuan"  onAction="#doCalc"/>
         </VBox>
     </left>
     <center>
-        <!--
-         /*护盾部分*/
-            /*
-             * 盾容
-             */
-            long capacityVal;
-            /**
-             * 充能速率
-             */
-            long speedVal;
-            /**
-             * 充能延迟
-             */
-            long delayVal;
-
-            /**
-             * 血上限降低
-             */
-            long maxHpDecreaseVal;
-
-            /*模组部分*/
-            /**
-             * 最大生命值增幅
-             */
-            long maxHpIncrease;
-            /**
-             * 恢复速度增幅
-             */
-            long recovery;
-
-
-         -->
         <GridPane styleClass="centerPane" vgap="10" hgap="10">
 
             <Label text="护盾部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -66,18 +30,31 @@
             <Label text="充能延迟" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
             <Label fx:id="delayVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
 
-            <Label text="血上限降低" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-            <Label fx:id="maxHpDecreaseVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+            <Label text="血上限降低" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <Label fx:id="maxHpDecreaseVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
 
-            <Label text="模组部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label text="模组部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
 
-            <Label text="最大生命值增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-            <Label fx:id="maxHpIncrease" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+            <Label text="最大生命值增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <Label fx:id="maxHpIncrease" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
 
-            <Label text="恢复速度增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-            <Label fx:id="recovery" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+            <Label text="恢复速度增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+            <Label fx:id="recovery" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="7"/>
+
+            <Label text="生命值" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <TextField fx:id="hp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+
+            <Label text="技能增加血上限系数" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <TextField fx:id="hpPower" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+            <Label text="最终血量" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+            <Label fx:id="finalHp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+
+            <Button fx:id="calc" text="计算" style="-fx-pref-width: 120" GridPane.columnIndex="0" GridPane.rowIndex="11" onAction="#doCalc"/>
 
         </GridPane>
+
     </center>
 </BorderPane>
 

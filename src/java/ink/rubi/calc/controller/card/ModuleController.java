@@ -1,9 +1,13 @@
 package ink.rubi.calc.controller.card;
 
 import ink.rubi.calc.controller.constant.ModuleFactory;
+import ink.rubi.calc.controller.coventer.IntegerConverter;
 import ink.rubi.calc.controller.coventer.ModuleBetaFactoryItemConverter;
 import ink.rubi.calc.controller.coventer.ModuleGammaFactoryItemConverter;
 import ink.rubi.calc.po.ModuleProperty;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -28,6 +32,9 @@ public class ModuleController implements Initializable {
 
     private ModuleProperty module = new ModuleProperty();
 
+    private IntegerProperty moduleLevel = new SimpleIntegerProperty();
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -37,9 +44,13 @@ public class ModuleController implements Initializable {
         beta.getItems().addAll(ModuleFactory.BetaFactory.values());
         gamma.getItems().addAll(ModuleFactory.GammaFactory.values());
 
-        module.betaProperty().bind(beta.selectionModelProperty());
-        module.gammaProperty().bind(gamma.selectionModelProperty());
-        module.levelProperty().bind(level.textProperty());
+        module.betaProperty().bindBidirectional(beta.selectionModelProperty());
+        module.gammaProperty().bindBidirectional(gamma.selectionModelProperty());
+        module.levelProperty().bindBidirectional(level.textProperty());
+
+
+        Bindings.bindBidirectional(module.levelProperty(), moduleLevel, new IntegerConverter());
+
 
         initValue();
     }

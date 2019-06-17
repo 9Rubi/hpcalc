@@ -2,9 +2,13 @@ package ink.rubi.calc.controller.card;
 
 import ink.rubi.calc.controller.constant.Reality;
 import ink.rubi.calc.controller.constant.ShieldFactory;
+import ink.rubi.calc.controller.coventer.IntegerConverter;
 import ink.rubi.calc.controller.coventer.RealityItemConverter;
 import ink.rubi.calc.controller.coventer.ShieldFactoryItemConverter;
 import ink.rubi.calc.po.ShieldProperty;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -29,6 +33,9 @@ public class ShieldController implements Initializable {
 
     private ShieldProperty shield = new ShieldProperty();
 
+    private IntegerProperty shieldLevel = new SimpleIntegerProperty();
+
+
     public void initValue() {
         level.setText("90");
         alpha.setValue(ShieldFactory.NONE);
@@ -51,11 +58,14 @@ public class ShieldController implements Initializable {
         gamma.getItems().addAll(ShieldFactory.values());
         reality.getItems().addAll(Reality.values());
 
-        shield.alphaProperty().bind(alpha.selectionModelProperty());
-        shield.betaProperty().bind(beta.selectionModelProperty());
-        shield.gammaProperty().bind(gamma.selectionModelProperty());
-        shield.realityProperty().bind(reality.selectionModelProperty());
-        shield.levelProperty().bind(level.textProperty());
+        shield.alphaProperty().bindBidirectional(alpha.selectionModelProperty());
+        shield.betaProperty().bindBidirectional(beta.selectionModelProperty());
+        shield.gammaProperty().bindBidirectional(gamma.selectionModelProperty());
+        shield.realityProperty().bindBidirectional(reality.selectionModelProperty());
+        shield.levelProperty().bindBidirectional(level.textProperty());
+
+        Bindings.bindBidirectional(shield.levelProperty(), shieldLevel, new IntegerConverter());
+
 
         initValue();
     }
