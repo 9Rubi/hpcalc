@@ -1,0 +1,26 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:id="shieldCard" styleClass="centerPane"
+          vgap="10" hgap="10" xmlns="http://javafx.com/javafx/8.0.172"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="ink.rubi.calc.controller.card.ShieldController">
+
+
+    <Label text="盾牌" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <Label text="等级" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="level" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+
+    <Label text="α" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <ComboBox fx:id="alpha" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="β" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <ComboBox fx:id="beta" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+
+    <Label text="γ" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <ComboBox fx:id="gamma" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="品质" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <ComboBox fx:id="reality" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+</GridPane>

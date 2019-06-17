@@ -1,0 +1,21 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:id="moduleCard" styleClass="centerPane"
+          vgap="10" hgap="10" xmlns="http://javafx.com/javafx/8.0.172"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="ink.rubi.calc.controller.card.ModuleController">
+
+
+    <Label text="模组" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <Label text="等级" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="level" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="β" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <ComboBox fx:id="beta" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+
+    <Label text="γ" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <ComboBox fx:id="gamma" styleClass="combo-box" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+
+</GridPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0"
+            prefWidth="935.0" stylesheets="/pattern/App.css"
+            xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ink.rubi.calc.controller.MainController">
+
+    <left>
+        <VBox fx:id="a" styleClass="vbox" prefWidth="220">
+            <fx:include fx:id="shieldCard" BorderPane.alignment="TOP_LEFT"
+                        source="ShieldCard.fxml"/>
+            <fx:include fx:id="moduleCard" BorderPane.alignment="TOP_LEFT"
+                        source="ModuleCard.fxml"/>
+        </VBox>
+    </left>
+    <center>
+        <!--
+         /*护盾部分*/
+            /*
+             * 盾容
+             */
+            long capacityVal;
+            /**
+             * 充能速率
+             */
+            long speedVal;
+            /**
+             * 充能延迟
+             */
+            long delayVal;
+
+            /**
+             * 血上限降低
+             */
+            long maxHpDecreaseVal;
+
+            /*模组部分*/
+            /**
+             * 最大生命值增幅
+             */
+            long maxHpIncrease;
+            /**
+             * 恢复速度增幅
+             */
+            long recovery;
+
+
+         -->
+        <GridPane styleClass="centerPane" vgap="10" hgap="10">
+
+            <Label text="护盾部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+            <Label text="盾容" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label fx:id="capacityVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+            <Label text="充能速率" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label fx:id="speedVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+            <Label text="充能延迟" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Label fx:id="delayVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+
+            <Label text="血上限降低" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Label fx:id="maxHpDecreaseVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+
+            <Label text="模组部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+
+            <Label text="最大生命值增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            <Label fx:id="maxHpIncrease" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+
+            <Label text="恢复速度增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <Label fx:id="recovery" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+
+        </GridPane>
+    </center>
+</BorderPane>
+
+
