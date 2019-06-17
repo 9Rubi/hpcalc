@@ -35,8 +35,18 @@ public class MainController implements Initializable {
     @FXML
     private ShieldController shieldCardController;
 
+    private static final BigDecimal staticVar = new BigDecimal(10000);
+    private static final BigDecimal perLevel = new BigDecimal(1.13);
+    private static final BigDecimal speedPower = new BigDecimal(10.24);
+    private static final BigDecimal delayPower = new BigDecimal(3.5);
+    private static final BigDecimal maxHpDecreasePower = new BigDecimal(32);
+    private static final BigDecimal capacityPower = new BigDecimal(64);
+    private static final BigDecimal maxHpIncreasePower = new BigDecimal(16);
+    private static final BigDecimal recoveryPower = new BigDecimal(0.5);
+
+
     public void initValue() {
-        hp.setText("1,410,475");
+        hp.setText("1410475");
         hpPower.setText("1");
     }
 
@@ -48,17 +58,6 @@ public class MainController implements Initializable {
     }
 
     public void doCalc(ActionEvent actionEvent) {
-
-        BigDecimal staticVar = new BigDecimal(10000);
-        BigDecimal perLevel = new BigDecimal(1.13);
-        BigDecimal speedPower = new BigDecimal(10.24);
-        BigDecimal delayPower = new BigDecimal(3.5);
-        BigDecimal maxHpDecreasePower = new BigDecimal(32);
-        BigDecimal capacityPower = new BigDecimal(64);
-
-        BigDecimal maxHpIncreasePower = new BigDecimal(16);
-        BigDecimal recoveryPower = new BigDecimal(0.5);
-
         ShieldProperty shield = shieldCardController.getShield();
         ShieldFactory shieldAlpha = shield.getAlpha().selectedItemProperty().get();
         ShieldFactory shieldBeta = shield.getBeta().selectedItemProperty().get();
