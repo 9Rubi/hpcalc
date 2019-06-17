@@ -12,11 +12,12 @@
             fx:controller="ink.rubi.calc.controller.MainController">
 
     <left>
-        <VBox fx:id="a" styleClass="vbox" prefWidth="220">
+        <VBox styleClass="vbox" prefWidth="220">
             <fx:include fx:id="shieldCard" BorderPane.alignment="TOP_LEFT"
                         source="ShieldCard.fxml"/>
             <fx:include fx:id="moduleCard" BorderPane.alignment="TOP_LEFT"
                         source="ModuleCard.fxml"/>
+            <Button fx:id="calc" text="jisuan"  onAction="#doCalc"/>
         </VBox>
     </left>
     <center>
