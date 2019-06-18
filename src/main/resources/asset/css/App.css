@@ -12,19 +12,23 @@
     -fx-alignment: CENTER_RIGHT;
     -fx-text-fill: aqua;
 }
-.leftTextField{
+
+.leftTextField {
     -fx-background-color: #919191;
     -fx-alignment: CENTER_LEFT;
     -fx-text-fill: aqua;
 }
+
 .whiteLabel {
     -fx-text-fill: #bbb;
 }
 
 
 .centerPane {
-    -fx-spacing: 10px;
-    -fx-padding: 10;
+    /*-fx-border-color: #00ff00;*/
+    -fx-vgap: 10;
+    -fx-hgap: 10;
+    -fx-padding: 0 0 10 0;
 }
 
 
@@ -33,6 +37,19 @@
     -fx-alignment: CENTER_LEFT;
     -fx-text-fill: aqua;
     -fx-pref-width: 160;
-
 }
 
+.vBox-default {
+    /*-fx-border-color: #00ff00;*/
+    /*-fx-padding: 10;*/
+}
+
+
+.body {
+    -fx-padding: 10;
+}
+
+.whiteLabel-b {
+    -fx-text-fill: #bbb;
+    -fx-pref-height: 21;
+}

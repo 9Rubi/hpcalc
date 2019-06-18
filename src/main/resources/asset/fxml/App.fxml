@@ -3,59 +3,64 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0"
+            prefHeight="400.0" styleClass="body"
             prefWidth="600.0" stylesheets="/asset/css/App.css"
             xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ink.rubi.calc.controller.MainController">
 
     <left>
-        <VBox styleClass="vbox" prefWidth="220">
+        <VBox styleClass="vBox-default" prefWidth="220">
             <fx:include fx:id="shieldCard" BorderPane.alignment="TOP_LEFT"
                         source="ShieldCard.fxml"/>
             <fx:include fx:id="moduleCard" BorderPane.alignment="TOP_LEFT"
                         source="ModuleCard.fxml"/>
+            <AnchorPane>
+                <Label text="遍历为耗时操作,请等待" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10" styleClass="whiteLabel"/>
+            </AnchorPane>
         </VBox>
     </left>
     <center>
-        <GridPane styleClass="centerPane" vgap="10" hgap="10">
+        <VBox styleClass="vBox-default">
+            <GridPane styleClass="centerPane">
 
-            <Label text="护盾部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label text="护盾部分" styleClass="whiteLabel-b" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
-            <Label text="盾容" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-            <Label fx:id="capacityVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                <Label text="盾容" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label fx:id="capacityVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 
-            <Label text="充能速率" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-            <Label fx:id="speedVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                <Label text="充能速率" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label fx:id="speedVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
 
-            <Label text="充能延迟" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-            <Label fx:id="delayVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                <Label text="充能延迟" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label fx:id="delayVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
 
-            <Label text="血上限降低" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-            <Label fx:id="maxHpDecreaseVal" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                <Label text="血上限降低" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label fx:id="maxHpDecreaseVal" styleClass="leftTextField" GridPane.columnIndex="2"
+                       GridPane.rowIndex="4"/>
 
-            <Label text="模组部分" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label text="模组部分" styleClass="whiteLabel-b" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
 
-            <Label text="最大生命值增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-            <Label fx:id="maxHpIncrease" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+                <Label text="最大生命值增幅" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                <Label fx:id="maxHpIncrease" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
 
-            <Label text="恢复速度增幅" styleClass="whiteLabel" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-            <Label fx:id="recovery" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="7"/>
+                <Label text="恢复速度增幅" styleClass="whiteLabel-b" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                <Label fx:id="recovery" styleClass="leftTextField" GridPane.columnIndex="2" GridPane.rowIndex="7"/>
 
-            <Label text="生命值" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-            <TextField fx:id="hp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                <Label text="生命值" styleClass="whiteLabel-b" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <TextField fx:id="hp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
 
 
-            <Label text="技能增加血上限系数" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-            <TextField fx:id="hpPower" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                <Label text="技能增加血上限系数" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <TextField fx:id="hpPower" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
 
-            <Label text="最终血量" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
-            <Label fx:id="finalHp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+                <Label text="最终血量" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                <Label fx:id="finalHp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
 
-            <Button text="计算" prefWidth="120" GridPane.columnIndex="0" GridPane.rowIndex="11" onAction="#doCalc"/>
-            <Button text="遍历组合,根据生命值和系数" prefWidth="163" GridPane.columnIndex="1" GridPane.rowIndex="11"
-                    onAction="#calcForEach"/>
-        </GridPane>
-
+                <Button text="计算" prefWidth="120" GridPane.columnIndex="0" GridPane.rowIndex="11" onAction="#doCalc"/>
+                <Button text="遍历组合,根据生命值和系数" prefWidth="163" GridPane.columnIndex="1" GridPane.rowIndex="11"
+                        onAction="#calcForEach"/>
+            </GridPane>
+        </VBox>
     </center>
 </BorderPane>
 
