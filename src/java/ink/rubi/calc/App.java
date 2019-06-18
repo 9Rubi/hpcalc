@@ -33,7 +33,7 @@ public class App extends Application {
         window = primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/App.fxml"));
         layout = fxmlLoader.load();
-
+        window.setResizable(false);
         window.setTitle("压血计算器");
 
         scene = new Scene(layout);

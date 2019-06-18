@@ -10,7 +10,6 @@ import ink.rubi.calc.po.ShieldProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -25,7 +24,6 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable {
 
-    public Button calc;
     @FXML
     private TextField hp, hpPower;
     @FXML
@@ -36,9 +34,9 @@ public class MainController implements Initializable {
     private ShieldController shieldCardController;
 
     private static final BigDecimal staticVar = new BigDecimal(10000);
-    private static final BigDecimal perLevel = new BigDecimal(1.13);
-    private static final BigDecimal speedPower = new BigDecimal(10.24);
-    private static final BigDecimal delayPower = new BigDecimal(3.5);
+    private static final BigDecimal perLevel = BigDecimal.valueOf(1.13);
+    private static final BigDecimal speedPower = BigDecimal.valueOf(10.24);
+    private static final BigDecimal delayPower = BigDecimal.valueOf(3.5);
     private static final BigDecimal maxHpDecreasePower = new BigDecimal(32);
     private static final BigDecimal capacityPower = new BigDecimal(64);
     private static final BigDecimal maxHpIncreasePower = new BigDecimal(16);
@@ -77,14 +75,14 @@ public class MainController implements Initializable {
         BigDecimal maxHpDecreaseResult = new BigDecimal(rateMaxHp)
                 .divide(staticVar).add(BigDecimal.ONE)
                 .multiply(maxHpDecreasePower)
-                .multiply(perLevel.pow(Integer.valueOf(shieldLevel)))
+                .multiply(perLevel.pow(Integer.parseInt(shieldLevel)))
                 .setScale(0, RoundingMode.HALF_UP);
 
         int rateCapacity = shieldAlpha.getCapacity() + shieldBeta.getCapacity() + shieldGamma.getCapacity() + reality.getCapacity() + 7500;
         BigDecimal capacityResult = new BigDecimal(rateCapacity)
                 .divide(staticVar).add(BigDecimal.ONE)
                 .multiply(capacityPower)
-                .multiply(perLevel.pow(Integer.valueOf(shieldLevel)))
+                .multiply(perLevel.pow(Integer.parseInt(shieldLevel)))
                 .setScale(0, RoundingMode.HALF_UP);
 
         int rateSpeed = shieldAlpha.getSpeed() + shieldBeta.getSpeed() + shieldGamma.getSpeed() + reality.getSpeed();
@@ -93,12 +91,12 @@ public class MainController implements Initializable {
 
         if (speedResult.compareTo(BigDecimal.ZERO) >= 0) {
             speedResult = speedPower
-                    .multiply(perLevel.pow(Integer.valueOf(shieldLevel)))
+                    .multiply(perLevel.pow(Integer.parseInt(shieldLevel)))
                     .multiply(speedResult.add(BigDecimal.ONE))
                     .setScale(0, RoundingMode.HALF_UP);
         } else {
             speedResult = speedPower
-                    .multiply(perLevel.pow(Integer.valueOf(shieldLevel)))
+                    .multiply(perLevel.pow(Integer.parseInt(shieldLevel)))
                     .divide(speedResult.abs().add(BigDecimal.ONE), 0, RoundingMode.HALF_UP);
         }
 
@@ -120,11 +118,11 @@ public class MainController implements Initializable {
 
         BigDecimal maxHpIncreaseResult = new BigDecimal(moduleBeta.getMaxHpIncrease()).divide(staticVar).add(BigDecimal.ONE)
                 .multiply(maxHpIncreasePower)
-                .multiply(perLevel.pow(Integer.valueOf(moduleLevel)))
+                .multiply(perLevel.pow(Integer.parseInt(moduleLevel)))
                 .setScale(0, RoundingMode.HALF_UP);
         BigDecimal recoveryResult = new BigDecimal(moduleGamma.getRecovery()).divide(staticVar).add(BigDecimal.ONE)
                 .multiply(recoveryPower)
-                .multiply(perLevel.pow(Integer.valueOf(moduleLevel)))
+                .multiply(perLevel.pow(Integer.parseInt(moduleLevel)))
                 .setScale(0, RoundingMode.HALF_UP);
 
         maxHpIncrease.setText(maxHpIncreaseResult.toString());

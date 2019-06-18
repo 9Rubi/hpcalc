@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author : Rubi
@@ -16,33 +17,46 @@ import java.util.List;
  */
 @Slf4j
 public class GetAll {
-    static BigDecimal staticVar = new BigDecimal(10000);
-    static BigDecimal perLevel = new BigDecimal(1.13);
-    static BigDecimal speedPower = new BigDecimal(10.24);
-    static BigDecimal delayPower = new BigDecimal(3.5);
-    static BigDecimal maxHpDecreasePower = new BigDecimal(32);
-    static BigDecimal capacityPower = new BigDecimal(64);
-    static BigDecimal maxHpIncreasePower = new BigDecimal(16);
-    static BigDecimal recoveryPower = new BigDecimal(0.5);
-    static int thereIs = 0;
+    private static final BigDecimal staticVar = BigDecimal.valueOf(10000L);
+    private static final BigDecimal perLevel = BigDecimal.valueOf(1.13);
+    private static final BigDecimal maxHpDecreasePower = BigDecimal.valueOf(32L);
+    private static final BigDecimal maxHpIncreasePower = BigDecimal.valueOf(16L);
+    private static int thereIs = 0;
+    private static int totalIs = 0;
+    private static int hpMax = 1410475;
+    private static double bonus = 1.15;
+
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入当前血量，默认为1410475");
+        String hpMaxStr = scanner.nextLine();
+        System.out.println("请输入技能增幅，默认为1.15（15%）");
+        String bonusStr = scanner.nextLine();
+        if (!hpMaxStr.isEmpty()) {
+            try {
+                hpMax = Integer.parseInt(hpMaxStr);
+            } catch (NumberFormatException e) {
+            }
+        }
+        if (!bonusStr.isEmpty()) {
+            try {
+                bonus = Double.parseDouble(bonusStr);
+            } catch (NumberFormatException e) {
+            }
+        }
         show();
     }
 
     private static void show() {
+        log.info("======================================================================");
         ShieldFactory[] shieldFactories = ShieldFactory.values();
         Reality[] realities = Reality.values();
-
         ModuleFactory.BetaFactory[] betaFactories = ModuleFactory.BetaFactory.values();
-        ModuleFactory.GammaFactory[] gammaFactories = ModuleFactory.GammaFactory.values();
-        int shieldLevel = 90;
-        int count = 0;
-        for (int moduleLevel = 90; moduleLevel >= 1; moduleLevel--) {
-            log.info("{}", count);
-            for (ModuleFactory.BetaFactory betaFactory : betaFactories) {
+        for (int shieldLevel = 90; shieldLevel >= 1; shieldLevel--) {
+            for (int moduleLevel = 90; moduleLevel >= 1; moduleLevel--) {
                 loop:
-                for (ModuleFactory.GammaFactory gammaFactory : gammaFactories) {
+                for (ModuleFactory.BetaFactory betaFactory : betaFactories) {
                     List<List<ShieldFactory>> lists = new ArrayList<>();
                     for (ShieldFactory alpha : shieldFactories) {
                         for (ShieldFactory beta : shieldFactories) {
@@ -58,8 +72,7 @@ public class GetAll {
                                     add(gamma);
                                 }});
                                 for (Reality reality : realities) {
-                                    count++;
-                                    doForEach(shieldLevel, moduleLevel, alpha, beta, gamma, reality, betaFactory, gammaFactory);
+                                    doForEach(shieldLevel, moduleLevel, alpha, beta, gamma, reality, betaFactory, hpMax, bonus);
                                 }
                             }
                         }
@@ -67,13 +80,15 @@ public class GetAll {
                 }
             }
         }
-        log.info("总共有{}种", thereIs);
+        log.info("======================================================================");
+        log.info("总共有{}种合适的组合", thereIs);
+        log.info("总共遍历了{}种", totalIs);
     }
 
-    private static void doForEach(int shieldLevel, int moduleLevel,
+    private static void doForEach(final int shieldLevel, final int moduleLevel,
                                   ShieldFactory alpha, ShieldFactory beta, ShieldFactory gamma,
                                   Reality reality, ModuleFactory.BetaFactory betaFactory,
-                                  ModuleFactory.GammaFactory gammaFactory) {
+                                  final int hpMax, final double bonus) {
         int rateMaxHp = alpha.getMaxHpDecrease() +
                 beta.getMaxHpDecrease() +
                 gamma.getMaxHpDecrease() +
@@ -87,20 +102,20 @@ public class GetAll {
                 .multiply(maxHpIncreasePower)
                 .multiply(perLevel.pow(moduleLevel))
                 .setScale(0, RoundingMode.HALF_UP);
-        BigDecimal result = new BigDecimal(1410475)
+        BigDecimal result = new BigDecimal(hpMax)
                 .subtract(maxHpDecreaseResult)
-                .multiply(new BigDecimal(1.15))
+                .multiply(new BigDecimal(bonus))
                 .add(maxHpIncreaseResult);
         int intValue = result.intValue();
         if (4 <= intValue && intValue < 1000) {
             log.info("==========================================");
-            log.info("护盾等级：{},配件：{}|{}|{},稀有度：{}", shieldLevel, alpha, beta, gamma, reality.getName());
-            log.info("模组等级为：{},配件：{}|{}", moduleLevel, betaFactory, gammaFactory);
+            log.info("护盾等级：{},配件：{}|{}|{},稀有度：{}.....模组等级为：{},配件：{}",
+                    shieldLevel, alpha, beta, gamma, reality.getName(), moduleLevel, betaFactory);
             log.info("最终血量：{}", intValue);
             log.info("==========================================");
             thereIs++;
         }
-
+        totalIs++;
     }
 
 }
