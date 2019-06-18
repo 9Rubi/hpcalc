@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.Getter;
 import org.slf4j.Logger;
@@ -31,9 +32,10 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/App.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/asset/fxml/App.fxml"));
         layout = fxmlLoader.load();
         window.setResizable(false);
+        window.getIcons().add(new Image(getClass().getResourceAsStream("/asset/image/boderlands2 hpCalc.png")));
         window.setTitle("压血计算器");
 
         scene = new Scene(layout);
