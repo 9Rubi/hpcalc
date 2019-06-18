@@ -9,7 +9,8 @@ import java.math.RoundingMode;
  */
 public class Calculator {
 
-    private static final BigDecimal staticVar = BigDecimal.valueOf(10000L);
+    private static final BigDecimal tenThousand = BigDecimal.valueOf(10000L);
+    private static final BigDecimal hundred = BigDecimal.valueOf(100L);
     private static final BigDecimal perLevel = BigDecimal.valueOf(1.13);
     private static final BigDecimal speedPower = BigDecimal.valueOf(10.24);
     private static final BigDecimal delayPower = BigDecimal.valueOf(3.5);
@@ -20,7 +21,7 @@ public class Calculator {
 
     public static BigDecimal calcMaxHpDecrease(final int rateMaxHp, final int shieldLevel) {
         return new BigDecimal(rateMaxHp)
-                .divide(staticVar).add(BigDecimal.ONE)
+                .divide(tenThousand).add(BigDecimal.ONE)
                 .multiply(maxHpDecreasePower)
                 .multiply(perLevel.pow(shieldLevel))
                 .setScale(0, RoundingMode.HALF_UP);
@@ -30,7 +31,7 @@ public class Calculator {
 
     public static BigDecimal calcCapacity(final int rateCapacity, final int shieldLevel) {
         return new BigDecimal(rateCapacity)
-                .divide(staticVar).add(BigDecimal.ONE)
+                .divide(tenThousand).add(BigDecimal.ONE)
                 .multiply(capacityPower)
                 .multiply(perLevel.pow(shieldLevel))
                 .setScale(0, RoundingMode.HALF_UP);
@@ -38,7 +39,7 @@ public class Calculator {
 
     public static BigDecimal calcSpeed(final int rateSpeed, final int shieldLevel) {
         BigDecimal speedResult = new BigDecimal(rateSpeed)
-                .divide(staticVar);
+                .divide(tenThousand);
 
         if (speedResult.compareTo(BigDecimal.ZERO) >= 0) {
             speedResult = speedPower
@@ -56,7 +57,7 @@ public class Calculator {
 
     public static BigDecimal calcDelay(final int rateDelay) {
         BigDecimal delayResult = new BigDecimal(rateDelay)
-                .divide(staticVar);
+                .divide(tenThousand);
         if (delayResult.compareTo(BigDecimal.ZERO) >= 0) {
             delayResult = delayPower.multiply(delayResult.add(BigDecimal.ONE)).setScale(2, RoundingMode.HALF_UP);
         } else {
@@ -68,14 +69,14 @@ public class Calculator {
     }
 
     public static BigDecimal calcMaxHpIncrease(final int rateMaxHpIncrease, final int moduleLevel) {
-        return new BigDecimal(rateMaxHpIncrease).divide(staticVar).add(BigDecimal.ONE)
+        return new BigDecimal(rateMaxHpIncrease).divide(hundred).add(BigDecimal.ONE)
                 .multiply(maxHpIncreasePower)
                 .multiply(perLevel.pow(moduleLevel))
                 .setScale(0, RoundingMode.HALF_UP);
     }
 
     public static BigDecimal calcRecovery(final int rateRecovery, final int moduleLevel) {
-        return new BigDecimal(rateRecovery).divide(staticVar).add(BigDecimal.ONE)
+        return new BigDecimal(rateRecovery).divide(hundred).add(BigDecimal.ONE)
                 .multiply(recoveryPower)
                 .multiply(perLevel.pow(moduleLevel))
                 .setScale(0, RoundingMode.HALF_UP);
