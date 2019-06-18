@@ -35,7 +35,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/asset/fxml/App.fxml"));
         layout = fxmlLoader.load();
         window.setResizable(false);
-        window.getIcons().add(new Image(getClass().getResourceAsStream("/asset/image/boderlands2 hpCalc.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("/asset/image/borderlands2 hpCalc.png")));
         window.setTitle("压血计算器");
 
         scene = new Scene(layout);

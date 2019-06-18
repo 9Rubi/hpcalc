@@ -15,6 +15,11 @@ public class IntegerConverter extends StringConverter<Number> {
 
     @Override
     public Number fromString(String string) {
-        return Integer.valueOf(string);
+        try {
+            return Integer.valueOf(string);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+
     }
 }

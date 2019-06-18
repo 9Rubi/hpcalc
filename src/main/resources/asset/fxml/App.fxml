@@ -51,8 +51,9 @@
             <Label text="最终血量" styleClass="whiteLabel" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
             <Label fx:id="finalHp" styleClass="leftTextField" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
 
-            <Button fx:id="calc" text="计算" style="-fx-pref-width: 120" GridPane.columnIndex="0" GridPane.rowIndex="11" onAction="#doCalc"/>
-
+            <Button text="计算" prefWidth="120" GridPane.columnIndex="0" GridPane.rowIndex="11" onAction="#doCalc"/>
+            <Button text="遍历组合,根据生命值和系数" prefWidth="163" GridPane.columnIndex="1" GridPane.rowIndex="11"
+                    onAction="#calcForEach"/>
         </GridPane>
 
     </center>
