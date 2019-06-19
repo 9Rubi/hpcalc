@@ -36,7 +36,7 @@ public class CSVPersistent {
     private static BlockingQueue<Combination> results = new LinkedBlockingDeque<>();
     public static volatile boolean wontPut = false;
     public static volatile boolean wontPersist = false;
-    private static final String CSV = "C:\\Users\\admin\\Desktop\\MyCSV.csv";
+    private static final String CSV = "C:\\Users\\13447\\Desktop\\MyCSV.csv";
 
     public static void main(String[] args) throws SQLException, InterruptedException {
 //        writeCSV();//计算所有可能性并写入到数据库和csv
@@ -47,7 +47,9 @@ public class CSVPersistent {
 
     private static void doHandleSearch() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入无技能时血量：");
         int i = scanner.nextInt();
+        System.out.println("请输入技能加成：");
         double j = scanner.nextDouble();
         MybatisPlus plus = MybatisPlus.getInstance();
         CombinationMapper mapper = plus.openSession().getMapper(CombinationMapper.class);
@@ -78,7 +80,7 @@ public class CSVPersistent {
 
         SqlSession session = mybatisPlus.openSession(connection);
         CombinationMapper mapper = session.getMapper(CombinationMapper.class);
-        System.out.println(mapper.selectCount(null));
+        System.out.println("条数:"+mapper.selectCount(null));
     }
 
     private static void writeCSV() throws SQLException {
