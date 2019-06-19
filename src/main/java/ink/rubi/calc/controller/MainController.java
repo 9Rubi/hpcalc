@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 12:46
  */
 @Slf4j
@@ -37,10 +37,6 @@ public class MainController implements Initializable {
     private ModuleController moduleCardController;
     @FXML
     private ShieldController shieldCardController;
-
-    private static final ShieldFactory[] shieldFactories = ShieldFactory.values();
-    private static final Reality[] realities = Reality.values();
-    private static final ModuleFactory.BetaFactory[] betaFactories = ModuleFactory.BetaFactory.values();
 
 
     public void initValue() {
@@ -115,11 +111,11 @@ public class MainController implements Initializable {
         for (int shieldLevel = 90; shieldLevel >= 1; shieldLevel--) {
             for (int moduleLevel = 90; moduleLevel >= 1; moduleLevel--) {
                 loop:
-                for (ModuleFactory.BetaFactory betaFactory : betaFactories) {
+                for (ModuleFactory.BetaFactory betaFactory : Calculator.BETA_FACTORIES) {
                     List<List<ShieldFactory>> lists = new ArrayList<>();
-                    for (ShieldFactory alpha : shieldFactories) {
-                        for (ShieldFactory beta : shieldFactories) {
-                            for (ShieldFactory gamma : shieldFactories) {
+                    for (ShieldFactory alpha : Calculator.SHIELD_FACTORIES) {
+                        for (ShieldFactory beta : Calculator.SHIELD_FACTORIES) {
+                            for (ShieldFactory gamma : Calculator.SHIELD_FACTORIES) {
                                 for (List<ShieldFactory> list : lists) {
                                     if (list.contains(alpha) && list.contains(beta) && list.contains(gamma)) {
                                         continue loop;
@@ -130,7 +126,7 @@ public class MainController implements Initializable {
                                     add(beta);
                                     add(gamma);
                                 }});
-                                for (Reality reality : realities) {
+                                for (Reality reality : Calculator.REALITIES) {
                                     String result = doForEach(shieldLevel, moduleLevel, alpha, beta, gamma, reality, betaFactory, hpMax, bonus);
                                     if (result != null) {
                                         results.add(result);

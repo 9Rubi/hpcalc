@@ -3,7 +3,7 @@ package ink.rubi.calc.controller.coventer;
 import javafx.util.StringConverter;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 17:11
  */
 public class IntegerConverter extends StringConverter<Number> {

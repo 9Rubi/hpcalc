@@ -4,7 +4,7 @@ import ink.rubi.calc.controller.constant.Reality;
 import javafx.util.StringConverter;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 14:34
  */
 public class RealityItemConverter extends StringConverter<Reality> {

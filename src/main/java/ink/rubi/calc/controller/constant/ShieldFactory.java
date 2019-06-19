@@ -2,10 +2,12 @@ package ink.rubi.calc.controller.constant;
 
 import lombok.Getter;
 
+import java.util.stream.Stream;
+
 /**
  * 单位 ：‱
  *
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 13:37
  */
 @Getter
@@ -48,4 +50,10 @@ public enum ShieldFactory {
         this.delay = delay;
         this.maxHpDecrease = maxHpDecrease;
     }
+
+
+    public static ShieldFactory getByName(String name) {
+        Stream.of(ShieldFactory.values());
+    }
+
 }

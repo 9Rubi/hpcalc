@@ -3,7 +3,7 @@ package ink.rubi.calc.po;
 import lombok.Data;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 15:49
  */
 @Data

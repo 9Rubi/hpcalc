@@ -4,7 +4,7 @@ import ink.rubi.calc.controller.constant.ShieldFactory;
 import javafx.util.StringConverter;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 14:26
  */
 public class ShieldFactoryItemConverter extends StringConverter<ShieldFactory> {

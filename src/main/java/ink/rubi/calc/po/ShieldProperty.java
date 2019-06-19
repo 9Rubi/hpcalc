@@ -9,7 +9,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.SingleSelectionModel;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 13:28
  */
 public class ShieldProperty {

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * 单位： ‱
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 15:05
  */
 public class ModuleFactory {

@@ -4,7 +4,7 @@ import ink.rubi.calc.controller.constant.ModuleFactory;
 import javafx.util.StringConverter;
 
 /**
- * @author Henry Wang
+ * @author Rubi
  * @since 2019-06-17 15:22
  */
 public class ModuleBetaFactoryItemConverter extends StringConverter<ModuleFactory.BetaFactory> {
