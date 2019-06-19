@@ -2,6 +2,8 @@ package ink.rubi.calc.controller.constant;
 
 import lombok.Getter;
 
+import java.util.stream.Stream;
+
 /**
  * 单位 ：‱
  *
@@ -10,10 +12,10 @@ import lombok.Getter;
  */
 @Getter
 public enum Reality {
-    WHITE("白色", 0, 0, 0,0),
-    GREEN("绿色", 1200, 0, 0,-1350),
-    BLUE("蓝色", 2400, 0, 0,-2700),
-    PURPLE("紫色", 3600, 0, 0,-4050);
+    WHITE("白色", 0, 0, 0, 0),
+    GREEN("绿色", 1200, 0, 0, -1350),
+    BLUE("蓝色", 2400, 0, 0, -2700),
+    PURPLE("紫色", 3600, 0, 0, -4050);
 
 
     String name;
@@ -35,11 +37,17 @@ public enum Reality {
      */
     int maxHpDecrease;
 
-    Reality(String name, int capacity, int speed, int delay,int maxHpDecrease) {
+    Reality(String name, int capacity, int speed, int delay, int maxHpDecrease) {
         this.name = name;
         this.capacity = capacity;
         this.speed = speed;
         this.delay = delay;
         this.maxHpDecrease = maxHpDecrease;
     }
+
+    @SuppressWarnings("all")
+    public static Reality getByName(String name) {
+        return Stream.of(Reality.values()).filter(i -> name.equals(i.getName())).findAny().get();
+    }
+
 }

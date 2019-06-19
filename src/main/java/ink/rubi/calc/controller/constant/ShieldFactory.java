@@ -12,16 +12,16 @@ import java.util.stream.Stream;
  */
 @Getter
 public enum ShieldFactory {
-    NONE("None", 0, 0, 0,0),
-    TEDIORE("Tediore", -1200, 1200, -1600,-225),
-    BANDIT("Bandit", 300, 2400, 800,1350),
-    VLADOF("Vladof", -300, 900, 400,0),
-    DAHL("Dahl", -600, -300, -2800,225),
-    ANSHIN("Anshin", 1500, -2400, 2800,-450),
-    MALIWAN("Maliwan", -1500, 300, 0,-1800  ),
-    TORGUE("Torgue", 900, 600, 800,1125),
-    HYPERION("Hyperion", -1200, -600, -3200,-675),
-    PANGOLIN("Pangolin", 2400, -2100, 3200,675);
+    NONE("None", 0, 0, 0, 0),
+    TEDIORE("Tediore", -1200, 1200, -1600, -225),
+    BANDIT("Bandit", 300, 2400, 800, 1350),
+    VLADOF("Vladof", -300, 900, 400, 0),
+    DAHL("Dahl", -600, -300, -2800, 225),
+    ANSHIN("Anshin", 1500, -2400, 2800, -450),
+    MALIWAN("Maliwan", -1500, 300, 0, -1800),
+    TORGUE("Torgue", 900, 600, 800, 1125),
+    HYPERION("Hyperion", -1200, -600, -3200, -675),
+    PANGOLIN("Pangolin", 2400, -2100, 3200, 675);
 
 
     String name;
@@ -51,9 +51,9 @@ public enum ShieldFactory {
         this.maxHpDecrease = maxHpDecrease;
     }
 
-
+    @SuppressWarnings("all")
     public static ShieldFactory getByName(String name) {
-        Stream.of(ShieldFactory.values());
+        return Stream.of(ShieldFactory.values()).filter(i -> name.equals(i.getName())).findAny().get();
     }
 
 }

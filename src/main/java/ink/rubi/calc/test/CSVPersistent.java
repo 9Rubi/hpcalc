@@ -36,7 +36,7 @@ public class CSVPersistent {
     private static BlockingQueue<Combination> results = new LinkedBlockingDeque<>();
     public static volatile boolean wontPut = false;
     public static volatile boolean wontPersist = false;
-    private static final String CSV = "wtf.csv";
+    private static final String CSV = "C:\\Users\\admin\\Desktop\\MyCSV.csv";
 
     public static void main(String[] args) throws SQLException, InterruptedException {
 //        writeCSV();//计算所有可能性并写入到数据库和csv
@@ -48,22 +48,23 @@ public class CSVPersistent {
     private static void doHandleSearch() {
         Scanner scanner = new Scanner(System.in);
         int i = scanner.nextInt();
-        int j = scanner.nextInt();
+        double j = scanner.nextDouble();
         MybatisPlus plus = MybatisPlus.getInstance();
         CombinationMapper mapper = plus.openSession().getMapper(CombinationMapper.class);
         List<Combination> list = mapper.selectList(null);
         list.forEach(combination -> {
-            int rateMaxHp = ShieldFactory..getMaxHpDecrease() +
-                    beta.getMaxHpDecrease() +
-                    gamma.getMaxHpDecrease() +
-                    reality.getMaxHpDecrease();
-            BigDecimal maxHpDecreaseResult = Calculator.calcMaxHpDecrease(rateMaxHp, shieldLevel);
-            BigDecimal maxHpIncreaseResult = Calculator.calcMaxHpIncrease(betaFactory.getMaxHpIncrease(), moduleLevel);
-            Calculator.calcFinal(new BigDecimal(i),
-                    Calculator.calcMaxHpDecrease(),
-                    new BigDecimal(j),
-                    Calculator.calcMaxHpIncrease()
-            );
+            int rateMaxHp = ShieldFactory.getByName(combination.getAlpha()).getMaxHpDecrease() +
+                    ShieldFactory.getByName(combination.getBeta()).getMaxHpDecrease() +
+                    ShieldFactory.getByName(combination.getGamma()).getMaxHpDecrease() +
+                    Reality.getByName(combination.getReality()).getMaxHpDecrease();
+            BigDecimal maxHpDecreaseResult = Calculator.calcMaxHpDecrease(rateMaxHp, combination.getShieldLevel());
+            BigDecimal maxHpIncreaseResult = Calculator.calcMaxHpIncrease(ModuleFactory.BetaFactory.getByName(combination
+                    .getModuleBeta()).getMaxHpIncrease(), combination.getModuleLevel());
+            int value = Calculator.calcFinal(new BigDecimal(i),
+                    maxHpDecreaseResult, new BigDecimal(j), maxHpIncreaseResult).intValue();
+            if (4 <= value && value <= 1000) {
+                System.out.println(combination + "======>" + value);
+            }
         });
 
     }

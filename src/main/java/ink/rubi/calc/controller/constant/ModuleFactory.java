@@ -2,8 +2,11 @@ package ink.rubi.calc.controller.constant;
 
 import lombok.Getter;
 
+import java.util.stream.Stream;
+
 /**
  * 单位： ‱
+ *
  * @author Rubi
  * @since 2019-06-17 15:05
  */
@@ -28,6 +31,12 @@ public class ModuleFactory {
             this.name = name;
             this.maxHpIncrease = maxHpIncrease;
         }
+
+        @SuppressWarnings("all")
+        public static BetaFactory getByName(String name) {
+            return Stream.of(BetaFactory.values()).filter(i -> name.equals(i.getName())).findAny().get();
+        }
+
     }
 
     @Getter
